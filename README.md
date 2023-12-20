@@ -10,7 +10,12 @@
 
 <p align="center">
       👉 <a href='https://novel.xxyopen.com'>官网</a>  |  👉 <a href='https://www.bilibili.com/video/BV1Zo4y187Mi'>项目演示</a>  |  👉 <a href='https://docs.xxyopen.com/course/novelplus/1.html'>安装教程</a>
-</p> 
+</p>
+
+## 项目环境
+JDK版本：openjdk 17.0.9  
+Maven版本：Maven 3.8.1  
+MySQL：8.0.35 
 
 ## 项目介绍
 
