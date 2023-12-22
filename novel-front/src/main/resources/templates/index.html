@@ -53,7 +53,7 @@
         </div>
         <div class="rightBox">
             <div class="title cf" id="weekcommend">
-                <h3>本周强推</h3>
+                <h3 th:text="#{thisWeekTopPicks}">本周强推</h3>
             </div>
             <div class="rightList">
                 <ul id="currentWeek" th:if="${bookMap['2']}">
@@ -73,7 +73,7 @@
     <div class="channelWrap channelPic cf">
         <div class="leftBox">
             <div class="title">
-                <h2 class="on">热门推荐</h2>
+                <h2 class="on" th:text="#{hotRecommendation}">热门推荐</h2>
             </div>
             <div class="picRecommend cf" id="hotRecBooks" th:if="${bookMap['3']}">
                 <div class="itemsList" th:each="book : ${bookMap['3']}">
@@ -93,14 +93,14 @@
         <div id="bookrank1_ShowBookRank">
             <div class="rightBox ">
                 <div class="title cf">
-                    <h3 class="on">点击榜单</h3>
+                    <h3 class="on" th:text="#{clickRanking}">点击榜单</h3>
                 </div>
                 <div class="rightList">
                     <ul id="clickRankBooks">
 
 
                     </ul>
-                    <div class="more"><a href="/book/book_ranking.html">查看更多&gt;</a></div>
+                    <div class="more"><a href="/book/book_ranking.html"  th:utext="${#messages.msg('viewMore', '&gt;')}">查看更多&gt;</a></div>
                 </div>
             </div>
         </div>
@@ -108,7 +108,7 @@
     <div class="channelWrap channelPic cf">
         <div class="leftBox">
             <div class="title">
-                <h2>精品推荐</h2>
+                <h2 th:text="#{highQualityRecommendation}">精品推荐</h2>
             </div>
             <div class="picRecommend cf" id="classicBooks" th:if="${bookMap['4']}">
                 <div class="itemsList" th:each="book : ${bookMap['4']}">
@@ -128,14 +128,14 @@
         <div id="bookrank2_ShowBookRank">
             <div class="rightBox ">
                 <div class="title cf">
-                    <h3 class="on">新书榜单</h3>
+                    <h3 class="on" th:text="#{newBooksRanking}">新书榜单</h3>
                 </div>
                 <div class="rightList">
                     <ul id="newRankBooks">
 
 
                     </ul>
-                    <div class="more"><a href="/book/book_ranking.html?type=1">查看更多&gt;</a></div>
+                    <div class="more"><a href="/book/book_ranking.html?type=1" th:utext="${#messages.msg('viewMore', '&gt;')}">查看更多&gt;</a></div>
                 </div>
             </div>
         </div>
@@ -143,7 +143,7 @@
     <div class="channelWrap channelTable cf">
         <div class="leftBox">
             <div class="title">
-                <h2>最新更新</h2>
+                <h2 th:text="#{latestUpdate}">最新更新</h2>
             </div>
             <div class="updateTable">
                 <table cellpadding="0" cellspacing="0">
@@ -166,14 +166,14 @@
         <div id="bookrank5_ShowBookRank">
             <div class="rightBox mb20">
                 <div class="title cf">
-                    <h3 class="on">更新榜单</h3>
+                    <h3 class="on" th:text="#{updateRanking}">更新榜单</h3>
                 </div>
                 <div class="rightList">
                     <ul id="updateRankBooks">
 
 
                     </ul>
-                    <div class="more"><a href="/book/book_ranking.html?type=2">查看更多&gt;</a></div>
+                    <div class="more"><a href="/book/book_ranking.html?type=2" th:utext="${#messages.msg('viewMore', '&gt;')}">查看更多&gt;</a></div>
                 </div>
             </div>
         </div>
@@ -182,7 +182,7 @@
 </div>
 <div class="friend_link">
     <div class="box_center cf" id="friendLink">
-        <span>友情链接：</span>
+        <span th:text="#{friendlyLinks}">友情链接：</span>
     </div>
 </div>
 
