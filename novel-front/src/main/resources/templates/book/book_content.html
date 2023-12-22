@@ -57,18 +57,19 @@
             <div class="read_menu">
                 <div class="menu_left" style="">
                     <ul>
-                        <li><a class="ico_catalog" th:href="'/book/indexList-'+${book.id}+'.html'" title="目录">
-                            <b>目录</b></a></li>
-                        <li><a class="ico_page" th:href="'/book/'+${book.id}+'.html'" title="返回书页"><b>书页</b></a></li>
-                        <li class="li_shelf" id="cFavs"><a class="ico_shelf" href="javascript:void(0);" title="加入书架"
-                                                           onclick="javascript:BookDetail.AddFavorites(37,1959973,1);"><b>加书架</b></a>
+                        <li><a class="ico_catalog" th:href="'/book/indexList-'+${book.id}+'.html'" th:title="#{tableOfContents}">
+                            <b style="display: none;" th:text="#{tableOfContents}">目录</b></a></li>
+                        <li><a class="ico_page" th:href="'/book/'+${book.id}+'.html'" th:title="#{returnToNovelPage}"><b style="display: none;" th:text="#{returnToNovelPage}">书页</b></a></li>
+                        <li class="li_shelf" id="cFavs">
+                            <a class="ico_shelf" href="javascript:void(0);" th:title="#{addToBookshelf}"
+                                                           onclick="javascript:BookDetail.AddFavorites(37,1959973,1);"><b style="display: none;" th:text="#{addToBookshelf}">加书架</b></a>
                         </li>
                         <li class="li_shelfed" style="display: none;"><a class="ico_shelfed" href="javascript:void(0);"
-                                                                         title="已收藏"><b>已收藏</b></a></li>
+                                                                         th:title="#{bookMarked}"><b style="display: none;" th:text="#{bookMarked}">已收藏</b></a></li>
 
-                        <li><a class="ico_comment" th:href="'/book/comment-'+${book.id}+'.html'" title="评论">
-                            <b>评论</b></a></li>
-                        <li><a class="ico_setup" href="javascript:void(0);" title="设置"><b>设置</b></a></li>
+                        <li><a class="ico_comment" th:href="'/book/comment-'+${book.id}+'.html'" th:title="#{comments}">
+                            <b style="display: none;" th:text="#{comments}">评论</b></a></li>
+                        <li><a class="ico_setup" href="javascript:void(0);" th:title="#{settings}"><b style="display: none;" th:text="#{settings}">设置</b></a></li>
                     </ul>
                 </div>
                 <div class="menu_right" style="position: fixed; bottom: 0">
@@ -84,7 +85,7 @@
             </div>
             <div class="readWrap">
                 <div class="bookNav">
-                    <a href="/">首页 </a>&gt; <a th:href="'/book/bookclass.html?c='+${book.catId}"
+                    <a href="/" th:text="#{home}">首页 </a>&gt; <a th:href="'/book/bookclass.html?c='+${book.catId}"
                                                th:text="${book.catName}">
                 </a>&gt; <a th:href="'/book/'+${book.id}+'.html'" th:utext="${book.bookName}">
 
@@ -97,11 +98,11 @@
                             <h1 th:utext="${bookIndex.indexName}">
                             </h1>
                             <div class="textinfo">
-                                类别：<a th:href="'/book/bookclass.html?c='+${book.catId}" th:text="${book.catName}"></a>
-                                作者：<a th:href="'javascript:searchByK(\''+${book.authorName}+'\')'"
+                                <em th:text="#{category}">类别</em>：<a th:href="'/book/bookclass.html?c='+${book.catId}" th:text="${book.catName}"></a>
+                                <em th:text="#{author}">作者</em>：<a th:href="'javascript:searchByK(\''+${book.authorName}+'\')'"
                                       th:utext="${book.authorName}"></a><span
-                                    th:text="'字数：'+${bookIndex.wordCount}"></span><span
-                                    th:text="'更新时间：'+${#dates.format(bookIndex.updateTime, 'yy/MM/dd HH:mm:ss')}"></span>
+                                    th:text="#{wordCount}+'：'+${bookIndex.wordCount}"></span><span
+                                    th:text="#{updateTime}+'：'+${#dates.format(bookIndex.updateTime, 'yy/MM/dd HH:mm:ss')}"></span>
                             </div>
                         </div>
                         <div class="txtwrap" th:if="${needBuy}">
@@ -151,10 +152,10 @@
                     </div>
                 </div>
                 <div class="nextPageBox">
-                    <a class="prev"
+                    <a th:text="#{previousChapter}" class="prev"
                        th:href="'javascript:enterPreIndexPage(\''+${book.id}+'\',\''+${preBookIndexId}+'\');'">上一章</a>
-                    <a class="dir" th:href="'/book/indexList-'+${book.id}+'.html'"
-                    >目录</a> <a class="next"
+                    <a th:text="#{tableOfContents}" class="dir" th:href="'/book/indexList-'+${book.id}+'.html'"
+                    >目录</a> <a th:text="#{nextChapter}" class="next"
                                th:href="'javascript:enterNextIndexPage(\''+${book.id}+'\',\''+${nextBookIndexId}+'\');'">下一章</a>
                 </div>
             </div>
