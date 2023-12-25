@@ -7,6 +7,45 @@ var fontbig = document.getElementById("fontbig");//大字体div
 var fontmiddle = document.getElementById("fontmiddle");//中字体div
 var fontsmall = document.getElementById("fontsmall");//小字体div
 var nr1 =  document.getElementById("chaptercontent");//内容div
+const translations = {
+    "en": {
+        "light.off": "Turn Off Light",
+        "light.on":"Turn On Light",
+        "eye.care":"Eye Care",
+    },
+    "zh-CN": {
+        "light.off": "关灯",
+        "light.on":"开灯",
+        "eye.care":"护眼",
+    }
+};
+const userLocale = navigator.language || navigator.userLanguage;
+class I18n {
+    constructor(translations) {
+      this.translations = translations || {};
+      this.defaultLocale = 'en'; // 默认语言为英语
+      this.locale = this.defaultLocale;
+    }  
+    setLocale(locale) {
+        if (this.translations[locale]) {
+            this.locale = locale;
+        } else {
+            this.locale = this.defaultLocale;
+        }
+    }  
+    t(message, locale) {
+      const selectedLocale = locale || this.locale;      
+      console.log('selected locale',selectedLocale)
+      // 检查是否有对应语言的翻译
+      if (this.translations[selectedLocale] && this.translations[selectedLocale][message]) {
+        return this.translations[selectedLocale][message];
+      }
+  
+      // 如果找不到对应翻译，返回原始消息
+      return message;
+    }
+}
+const i18n = new I18n(translations);
 //内容页用户设置
 function nr_setbg(intype){
     var huyandiv = document.getElementById("huyandiv");
@@ -22,7 +61,7 @@ function nr_setbg(intype){
         }
     }
     if(intype == "light"){
-        if(light.innerHTML == "关灯"){
+        if(light.innerHTML == i18n.t("light.off")){
             document.cookie="light=yes;path=/";
             set("light","yes");
         }
@@ -122,13 +161,13 @@ function set(intype,p){
     if(intype == "light"){
         if(p == "yes"){
             //关灯
-            lightdiv.innerHTML = "开灯";
+            lightdiv.innerHTML = i18n.t("light.on");
             lightdiv.className="button lighton";
             nr_body.style.backgroundColor = "#000";
             //nr_title.style.color = "#ccc";
             nr1.style.color = "#999";
 
-            huyandiv.innerHTML = "护眼";
+            huyandiv.innerHTML = i18n.t("eye.care");
             huyandiv.className="button huyanon";
             //pt_prev.style.cssText = "background-color:#222;color:#0065B5;";
             //pt_mulu.style.cssText = "background-color:#222;color:#0065B5;";
@@ -140,7 +179,7 @@ function set(intype,p){
         }
         else if(p == "no"){
             //开灯
-            lightdiv.innerHTML = "关灯";
+            lightdiv.innerHTML = i18n.t("light.off");
             lightdiv.className="button lightoff";
             nr_body.style.backgroundColor = "#fff";
             nr1.style.color = "#000";
@@ -153,12 +192,12 @@ function set(intype,p){
             //pb_next.style.cssText = "";
             //shuqian_2.style.color = "#000";
 
-            huyandiv.innerHTML = "护眼";
+            huyandiv.innerHTML = i18n.t("eye.care");
             huyandiv.className="button huyanon";
         }
         else if(p == "huyan"){
             //护眼
-            lightdiv.innerHTML = "关灯";
+            lightdiv.innerHTML = i18n.t("light.off");
             lightdiv.className="button lightoff";
             huyandiv.className="button huyanoff";
             nr_body.style.backgroundColor = "#005716";

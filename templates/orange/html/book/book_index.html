@@ -18,7 +18,7 @@
     <div class="nav_sub">
         <a href="/" th:text="${application.website.name}"></a>&gt;<a th:href="'/book/bookclass.html?c='+${book.catId}" th:text="${book.catName}"></a>&gt;<a
             th:href="'/book/'+${book.id}+'.html'" th:utext="${book.bookName}"></a>&gt;<a
-            th:href="'/book/indexList-'+${book.id}+'.html'">作品目录</a>
+            th:href="'/book/indexList-'+${book.id}+'.html'" th:text="#{}">作品目录</a>
     </div>
     <div class="channelWrap channelChapterlist cf mb50">
 
@@ -30,8 +30,8 @@
                     </div>
                     <ul class="list">
                         <li>
-                            <span>作者：<a href="javascript:void(0)" th:utext="${book.authorName}"></a></span>
-                            <span>类别：<a th:href="'/book/bookclass.html?c='+${book.catId}" th:text="${book.catName}"></a></span>
+                            <span><span th:text="#{author}">作者</span>：<a href="javascript:void(0)" th:utext="${book.authorName}"></a></span>
+                            <span><span th:text="#{category}">类别</span>：<a th:href="'/book/bookclass.html?c='+${book.catId}" th:text="${book.catName}"></a></span>
                             <span th:switch="${book.bookStatus}">状态：<em class="black3" th:case="'0'">连载中</em><em class="black3"
                                                                                   th:case="*">已完结</em></span>
                             <span>总点击：<em class="black3" id="cTotal" th:text="${book.visitCount}"></em></span>

@@ -20,12 +20,12 @@
         <div class="so_tag">
             <ul class="list">
                 <li class="so_pd" id="workDirection">
-                    <span class="tit">作品频道：</span>
-                    <a filter-value="0" href="javascript:listBookCategory();search(1,20)" class="on">男频</a>
-                    <a filter-value="1" href="javascript:listBookCategory();search(1,20)">女频</a>
+                    <span class="tit" th:text="#{channel.title}+'：'">作品频道：</span>
+                    <a filter-value="0" href="javascript:listBookCategory();search(1,20)" class="on" th:text="#{channel.male}">男频</a>
+                    <a filter-value="1" href="javascript:listBookCategory();search(1,20)" th:text="#{channel.female}">女频</a>
                 </li>
                 <li id="idGirl" class="so_class">
-                    <span class="tit">作品分类：</span>
+                    <span class="tit"th:text="#{category.title}+'：'">作品分类：</span>
                     <span class="so_girl" id="girlCategoryList" style="display: none;">
                         </span>
                     <span class="so_boy" id="boyCategoryList">
@@ -38,33 +38,33 @@
                     <a href="?b=0&s=0&wb=0&wd=0&up=0&fr=2&so=0&ms=2" class="">收费作品</a>
                 </li>-->
                 <li class="so_progress">
-                    <span class="tit">是否完结：</span>
-                    <a  href="javascript:search(1,20)" class="on">不限</a>
-                    <a filter-value="0" href="javascript:search(1,20)" class="">连载中</a>
-                    <a filter-value="1" href="javascript:search(1,20)" class="">已完结</a>
+                    <span class="tit" th:text="#{completion.title}+'：'">是否完结：</span>
+                    <a  href="javascript:search(1,20)" class="on" th:text="#{completion.unlimited}">不限</a>
+                    <a filter-value="0" href="javascript:search(1,20)" class="" th:text="#{completion.serializing}">连载中</a>
+                    <a filter-value="1" href="javascript:search(1,20)" class="" th:text="#{completion.completed}">已完结</a>
                 </li>
                 <li class="so_words">
-                    <span class="tit">作品字数：</span>
+                    <span class="tit" th:text="#{word_count.title}+'：'">作品字数：</span>
                     <a href="javascript:search(1,20)" class="on">不限</a>
-                    <a filter-value-max="300000" href="javascript:search(1,20)" class="">30万字以下</a>
-                    <a filter-value-min="300000" filter-value-max="500000" href="javascript:search(1,20)" class="">30-50万字</a>
-                    <a filter-value-min="500000" filter-value-max="1000000" href="javascript:search(1,20)" class="">50-100万字</a>
-                    <a filter-value-min="1000000" href="javascript:search(1,20)" class="">100万字以上</a>
+                    <a filter-value-max="300000" href="javascript:search(1,20)" class="" th:text="#{word_count.30k_below}">30万字以下</a>
+                    <a filter-value-min="300000" filter-value-max="500000" href="javascript:search(1,20)" class="" th:text="#{word_count.30k_50k}">30-50万字</a>
+                    <a filter-value-min="500000" filter-value-max="1000000" href="javascript:search(1,20)" class="" th:text="#{word_count.50k_100k}">50-100万字</a>
+                    <a filter-value-min="1000000" href="javascript:search(1,20)" class="" th:text="#{word_count.100k_above}">100万字以上</a>
                 </li>
                 <li class="so_update">
-                    <span class="tit">更新时间：</span>
-                    <a href="javascript:search(1,20)" class="on">不限</a>
-                    <a filter-value="3" href="javascript:search(1,20)" class="">三日内</a>
-                    <a filter-value="7" href="javascript:search(1,20)" class="">七日内</a>
-                    <a filter-value="15" href="javascript:search(1,20)" class="">半月内</a>
-                    <a filter-value="30" href="javascript:search(1,20)" class="">一月内</a>
+                    <span class="tit" th:text="#{update_time.title}+'：'">更新时间：</span>
+                    <a href="javascript:search(1,20)" class="on" th:text="#{update_time.unlimited}">不限</a>
+                    <a filter-value="3" href="javascript:search(1,20)" class=""  th:text="#{update_time.three_days}">三日内</a>
+                    <a filter-value="7" href="javascript:search(1,20)" class=""  th:text="#{update_time.seven_days}">七日内</a>
+                    <a filter-value="15" href="javascript:search(1,20)" class=""  th:text="#{update_time.half_month}">半月内</a>
+                    <a filter-value="30" href="javascript:search(1,20)" class=""  th:text="#{update_time.one_month}">一月内</a>
                 </li>
                 <li class="so_sort">
-                    <span class="tit">排序方式：</span>
-                    <a href="javascript:search(1,20)" class="on">不限</a>
-                    <a filter-value="last_index_update_time" href="javascript:search(1,20)" class="">更新时间</a>
-                    <a filter-value="word_count" href="javascript:search(1,20)" class="">总字数</a>
-                    <a filter-value="visit_count" href="javascript:search(1,20)" class="">点击量</a>
+                    <span class="tit"  th:text="#{sort.title}+'：'">排序方式：</span>
+                    <a href="javascript:search(1,20)" class="on" th:text="#{sort.unlimited}">不限</a>
+                    <a filter-value="last_index_update_time" href="javascript:search(1,20)" class="" th:text="#{sort.update_time}">更新时间</a>
+                    <a filter-value="word_count" href="javascript:search(1,20)" class="" th:text="#{sort.total_words}">总字数</a>
+                    <a filter-value="visit_count" href="javascript:search(1,20)" class="" th:text="#{sort.clicks}">点击量</a>
                 </li>
             </ul>
         </div>
@@ -77,12 +77,12 @@
             <table cellpadding="0" cellspacing="0">
                 <thead>
                 <tr>
-                    <th class="rank">序号</th>
-                    <th class="style">类别</th>
-                    <th class="name">书名</th>
-                    <th class="chapter">最新章节</th>
-                    <th class="author">作者</th>
-                    <th class="word">字数</th>
+                    <th class="rank" th:text="#{indexNumber}">序号</th>
+                    <th class="style" th:text="#{category}">类别</th>
+                    <th class="name" th:text="#{bookTitle}">书名</th>
+                    <th class="chapter" th:text="#{latestChapter}">最新章节</th>
+                    <th class="author" th:text="#{author}">作者</th>
+                    <th class="word" th:text="#{wordCount}">字数</th>
                 </tr>
                 </thead>
                 <tbody id="bookList">

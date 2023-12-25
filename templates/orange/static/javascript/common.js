@@ -3,8 +3,55 @@ var needLoginPath = ['/user/favorites.html','/user/comment.html','/user/feedback
     '/user/set_password.html','/user/set_sex.html','/user/setup.html','/user/userinfo.html',
     "/pay/index.html," +
     "/author/register.html","/author/index.html"];
+
 var isLogin = false;
 var url = window.location.search;
+const translations = {
+    "en": {
+      "login": "Login",
+      "logout": "Logout",
+      "register": "Register",
+      "onlyUploadImage": "Only image files are allowed!",
+      "imageSizeExceedsLimit": "Uploaded image size cannot exceed 1MB!",
+      "networkError": "Network error"
+    },
+    "zh-CN": {
+      "login": "登录",
+      "logout": "退出",
+      "register": "注册",
+      "onlyUploadImage": "只能上传图片格式的文件！",
+      "imageSizeExceedsLimit": "上传的图片大小不能超过1MB！",
+      "networkError": "网络异常"
+    }
+};
+const userLocale = navigator.language || navigator.userLanguage;
+class I18n {
+    constructor(translations) {
+      this.translations = translations || {};
+      this.defaultLocale = 'en'; // 默认语言为英语
+      this.locale = this.defaultLocale;
+    }  
+    setLocale(locale) {
+        if (this.translations[locale]) {
+            this.locale = locale;
+        } else {
+            this.locale = this.defaultLocale;
+        }
+    }  
+    t(message, locale) {
+      const selectedLocale = locale || this.locale;      
+      console.log('selected locale',selectedLocale)
+      // 检查是否有对应语言的翻译
+      if (this.translations[selectedLocale] && this.translations[selectedLocale][message]) {
+        return this.translations[selectedLocale][message];
+      }
+  
+      // 如果找不到对应翻译，返回原始消息
+      return message;
+    }
+}
+const i18n = new I18n(translations);
+i18n.setLocale(userLocale);
 //key(需要检索的键）
 function getSearchString(key) {
     var str = url;
@@ -55,7 +102,7 @@ if(!token){
         location.href = '/user/login.html?originUrl='+decodeURIComponent(location.href);
     }
 
-    $(".user_link").html("<i class=\"line mr20\">|</i><a href=\"/user/login.html\"  class=\"mr15\">登录</a><a href=\"/user/register.html\" >注册</a>");
+    $(".user_link").html(`<i class=\"line mr20\">|</i><a href=\"/user/login.html\"  class=\"mr15\">${i18n.t("login")}</a><a href=\"/user/register.html\" >${i18n.t("register")}</a>`);
 }else{
     $.ajax({
         type: "POST",
@@ -83,7 +130,7 @@ if(!token){
                 if(needLoginPath.indexOf(window.location.pathname) != -1){
                     location.href = '/user/login.html';
                 }
-                $(".user_link").html("<i class=\"line mr20\">|</i><a href=\"/user/login.html\"  class=\"mr15\">登录</a><a href=\"/user/register.html\" >注册</a>");
+                $(".user_link").html(`<i class=\"line mr20\">|</i><a href=\"/user/login.html\"  class=\"mr15\">${i18n.t("login")}</a><a href=\"/user/register.html\" >${i18n.t("register")}</a>`);
             }
         },
         error: function () {

@@ -4,6 +4,8 @@ server:
 
 #不分表的数据库配置
 spring:
+  messages:
+    basename: lang/messages
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/novel_plus?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
@@ -34,7 +36,7 @@ pic:
 
 #模版配置
 templates:
-  name: green
+  name: orange
 
 #小说内容保存配置
 content:
