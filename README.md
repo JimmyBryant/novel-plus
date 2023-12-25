@@ -17,6 +17,14 @@ JDK版本：openjdk 17.0.9
 Maven版本：Maven 3.8.1  
 MySQL：8.0.35 
 
+##  编译项目
+#### 编译整个项目
+通过 -Dmaven.test.skip 参数指示 Maven 跳过测试  
+``` mvn clean package  -Dmaven.test.skip```
+#### 编译前端网站
+使用-am会同时打包依赖的本地模块  
+``` mvn clean package -pl novel-front -am```
+
 ## 项目介绍
 
 novel-plus 是一个多端（PC、WAP）阅读，功能完善的原创文学 CMS
