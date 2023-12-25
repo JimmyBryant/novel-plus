@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>注册</title>
+    <title th:text="#{register}">注册</title>
 
     <div th:include="mobile/common/css :: css"></div>
 
@@ -19,7 +19,7 @@
         <a href="javascript:history.go(-1)">
             <i style="font-size: 20px;color: #fff;" class="layui-icon">&#xe65c;</i></a>
     </div>
-    <b class="layui-icon">注册</b>
+    <b class="layui-icon" th:text="#{register}">注册</b>
     <div style="width:10%;float: right;margin-right: 10px"><a href="/">
         <i style="font-size: 20px;color: #fff;" class="layui-icon">&#xe68e;</i>
     </a>
@@ -30,24 +30,24 @@
     <input type="hidden" id="bookIdHidden" name="bookId" th:value="${bookId}"/>
 
     <div class="layui-form-item">
-        <label class="layui-form-label">手机号码</label>
+        <label class="layui-form-label" th:text="#{phoneNumber}">手机号码</label>
         <div class="layui-input-inline">
-            <input name="txtUName" type="text" id="txtUName" placeholder="请输入手机号"
+            <input name="txtUName" type="text" id="txtUName" th:placeholder="#{phoneNumberPlaceholder}"
                    autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">密码</label>
+        <label class="layui-form-label" th:text="#{password}">密码</label>
         <div class="layui-input-inline">
-            <input name="txtPassword" type="password" id="txtPassword" placeholder="请输入密码"
+            <input name="txtPassword" type="password" id="txtPassword" th:placeholder="#{passwordPlaceholder}"
                    autocomplete="off" class="layui-input">
         </div>
 
     </div>
     <div class="layui-form-item ">
-        <label class="layui-form-label">验证码</label>
+        <label class="layui-form-label" th:text="#{captcha}">验证码</label>
         <div class="layui-input-inline">
-            <input name="txtUName" type="text" id="TxtChkCode" placeholder="请输入验证码"
+            <input name="txtUName" type="text" id="TxtChkCode" th:placeholder="#{captchaPlaceholder}"
                    autocomplete="off" class="layui-input">
         </div>
         <div class="layui-input-inline"><img
@@ -56,8 +56,8 @@
     </div>
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <input type="button" value="注册" id="btnRegister" class="layui-btn"/>
-            <a class="layui-btn layui-btn-primary" href="/user/login.html">登录</a>
+            <input type="button" th:value="#{register}" id="btnRegister" class="layui-btn"/>
+            <a class="layui-btn layui-btn-primary" href="/user/login.html" th:text="#{loginNow}">登录</a>
         </div>
     </div>
 </form>

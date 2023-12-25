@@ -139,17 +139,17 @@
         <div style="position:relative;padding: 3px 10px 0px"
              class="layui-col-xs8 layui-col-sm8 layui-col-md8 layui-col-lg8">
             <a th:href="'javascript:searchBooks(\''+ ${book.authorName}+'\')'">
-                <div style=";color: #444;" th:utext="'作者：'+ ${book.authorName}"></div>
+                <div style=";color: #444;" th:utext="#{author}+'：'+ ${book.authorName}"></div>
             </a>
             <a th:href="'/book/book_ranking.html?catId='+${book.catId}">
-                <div style="margin-top: 5px;color: #444;" th:text="'类别：'+ ${book.catName}"></div>
+                <div style="margin-top: 5px;color: #444;" th:text="#{category}+'：'+ ${book.catName}"></div>
             </a>
-            <div style="margin-top: 5px;color: #444;" th:text="'状态：'+ ${book.bookStatus==0?'连载':'完结'}"></div>
-            <div style="margin-top: 5px;color: #444;">更新：<i
+            <div style="margin-top: 5px;color: #444;" th:text="#{status}+'：'+ (${book.bookStatus==0} ? #{completion.serializing} : #{completion.completed})"></div>
+            <div style="margin-top: 5px;color: #444;"><span th:text="#{update}">更新</span>：<i
                     th:text="${#dates.format(book.lastIndexUpdateTime, 'yy-MM-dd')}"></i></div>
-            <div style="margin-top: 5px;color: #444;">评分：<i style="font-weight:bold;color: red"
-                                                            th:text="${book.score} + '分'"></i></div>
-            <div style="margin-top: 5px;color: #444;">点击：<i style="font-weight:bold;color: red"
+            <div style="margin-top: 5px;color: #444;"><span th:text="#{rating}">评分</span>：<i style="font-weight:bold;color: red"
+                                                            th:text="${book.score}"></i></div>
+            <div style="margin-top: 5px;color: #444;"><span th:text="#{click}">点击</span>：<i style="font-weight:bold;color: red"
                                                             th:text="${book.visitCount}"></i></div>
 
 
@@ -159,10 +159,10 @@
 
     <div style="text-align: center;height: 45px;line-height: 45px">
         <a th:href="'/book/'+${book.id}+'/'+${firstBookIndexId}+'.html'" type="button"
-           style="background-color:#3eaf7c!important" class="layui-btn layui-btn-sm layui-btn-radius">开始阅读</a>
+           style="background-color:#3eaf7c!important" class="layui-btn layui-btn-sm layui-btn-radius" th:text="#{startReading}">开始阅读</a>
         <button type="button" id="cFavs" onclick="addInShell()"
                 style="border: 1px solid #3eaf7c;color: #3eaf7c;background-color:#fff!important"
-                class="layui-btn layui-btn-sm layui-btn-radius ">加入书架
+                class="layui-btn layui-btn-sm layui-btn-radius " th:text="#{addToBookshelf}">加入书架
         </button>
 
         <!--
@@ -176,9 +176,9 @@
     <div class="layui-collapse">
         <div class="layui-colla-item">
             <h2 class="layui-colla-title">
-                <span>最新章节</span>
+                <span th:text="#{latestChapter}">最新章节</span>
                 <span style="margin-left: 30px">
-                更新： <i th:text="${#dates.format(book.lastIndexUpdateTime, 'yy-MM-dd HH:mm:ss')}"></i>
+                <span th:text="#{update}">更新</span>： <i th:text="${#dates.format(book.lastIndexUpdateTime, 'yy-MM-dd HH:mm:ss')}"></i>
             </span>
             </h2>
             <div class="layui-colla-content layui-show indexP layui-row" id="indexList">
@@ -189,7 +189,7 @@
     </div>
     <div style="height: 42px;color:#4c6978;line-height: 42px;padding-left: 30px;background: #f2f2f2">
 
-        <a th:href="'/book/indexList-'+${book.id}+'.html'">查看完整目录</a>
+        <a th:href="'/book/indexList-'+${book.id}+'.html'" th:text="#{viewFullCatalog}">查看完整目录</a>
     </div>
 
     <!--

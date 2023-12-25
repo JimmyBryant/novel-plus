@@ -205,18 +205,18 @@
 
 
     <p class="Readpage" style="background:#FFFFFF;padding:2px;">
-        <a id="lightdiv" class="button lightoff" onclick="nr_setbg('light')">关灯</a>
-        <a id="huyandiv" class="button huyanon" onclick="nr_setbg('huyan')">护眼</a>&nbsp;&nbsp;&nbsp;&nbsp;
-        字体：<a id="fontbig" class="sizebg" onclick="nr_setbg('big')">大</a> <a id="fontmiddle" class="button sizebgon"
-                                                                             onclick="nr_setbg('middle')">中</a> <a
-            id="fontsmall" class="sizebg" onclick="nr_setbg('small')">小</a>
+        <a id="lightdiv" class="button lightoff" onclick="nr_setbg('light')" th:text="#{light.off}">关灯</a>
+        <a id="huyandiv" class="button huyanon" onclick="nr_setbg('huyan')" th:text="#{eye.care}">护眼</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <span th:text="#{font.size}">字体</span>：<a id="fontbig" class="sizebg" onclick="nr_setbg('big')" th:text="#{font.size.large}">大</a> <a id="fontmiddle" class="button sizebgon"
+                                                                             onclick="nr_setbg('middle')"  th:text="#{font.size.medium}">中</a> <a
+            id="fontsmall" class="sizebg" onclick="nr_setbg('small')" th:text="#{font.size.small}">小</a>
     </p>
     <div class="indexDiv" style="height: 42px;line-height: 42px;text-align:center;background: #f2f2f2">
 
-        <a style="color: #333" th:href="'javascript:enterPreIndexPage(\''+${book.id}+'\',\''+${preBookIndexId}+'\');'">上一章</a>
-        <a style="color: #333" th:href="'/book/indexList-'+${book.id}+'.html'">目录</a>
+        <a style="color: #333" th:href="'javascript:enterPreIndexPage(\''+${book.id}+'\',\''+${preBookIndexId}+'\');'" th:text="#{previousChapter}">上一章</a>
+        <a style="color: #333" th:href="'/book/indexList-'+${book.id}+'.html'" th:text="#{tableOfContents}">目录</a>
         <a style="color: #333"
-           th:href="'javascript:enterNextIndexPage(\''+${book.id}+'\',\''+${nextBookIndexId}+'\');'">下一章</a>
+           th:href="'javascript:enterNextIndexPage(\''+${book.id}+'\',\''+${nextBookIndexId}+'\');'" th:text="#{nextChapter}">下一章</a>
     </div>
     <!--<div id="screenInput" class="screen_toolbar" style="display: none">
         <div style="height: 5px" class="layui-col-xs2 layui-col-sm3 layui-col-md3 layui-col-lg3"></div>
@@ -254,10 +254,10 @@
     </div>
     <div class="indexDiv" style="height: 42px;line-height: 42px;text-align:center;background: #f2f2f2">
 
-        <a style="color: #333" th:href="'javascript:enterPreIndexPage(\''+${book.id}+'\',\''+${preBookIndexId}+'\');'">上一章</a>
-        <a style="color: #333" th:href="'/book/indexList-'+${book.id}+'.html'">目录</a>
+        <a style="color: #333" th:href="'javascript:enterPreIndexPage(\''+${book.id}+'\',\''+${preBookIndexId}+'\');'" th:text="#{previousChapter}">上一章</a>
+        <a style="color: #333" th:href="'/book/indexList-'+${book.id}+'.html'" th:text="#{tableOfContents}">目录</a>
         <a style="color: #333"
-           th:href="'javascript:enterNextIndexPage(\''+${book.id}+'\',\''+${nextBookIndexId}+'\');'">下一章</a>
+           th:href="'javascript:enterNextIndexPage(\''+${book.id}+'\',\''+${nextBookIndexId}+'\');'" th:text="#{nextChapter}">下一章</a>
 
     </div>
 
