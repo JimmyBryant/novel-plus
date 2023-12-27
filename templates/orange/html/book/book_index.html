@@ -18,7 +18,7 @@
     <div class="nav_sub">
         <a href="/" th:text="${application.website.name}"></a>&gt;<a th:href="'/book/bookclass.html?c='+${book.catId}" th:text="${book.catName}"></a>&gt;<a
             th:href="'/book/'+${book.id}+'.html'" th:utext="${book.bookName}"></a>&gt;<a
-            th:href="'/book/indexList-'+${book.id}+'.html'" th:text="#{}">作品目录</a>
+            th:href="'/book/indexList-'+${book.id}+'.html'" th:text="#{book.directory}">作品目录</a>
     </div>
     <div class="channelWrap channelChapterlist cf mb50">
 
@@ -32,10 +32,10 @@
                         <li>
                             <span><span th:text="#{author}">作者</span>：<a href="javascript:void(0)" th:utext="${book.authorName}"></a></span>
                             <span><span th:text="#{category}">类别</span>：<a th:href="'/book/bookclass.html?c='+${book.catId}" th:text="${book.catName}"></a></span>
-                            <span th:switch="${book.bookStatus}">状态：<em class="black3" th:case="'0'">连载中</em><em class="black3"
-                                                                                  th:case="*">已完结</em></span>
-                            <span>总点击：<em class="black3" id="cTotal" th:text="${book.visitCount}"></em></span>
-                            <span>总字数：<em class="black3" th:text="${book.wordCount}"></em></span>
+                            <span th:switch="${book.bookStatus}"><span th:text="#{status}">状态</span>：<em class="black3" th:case="'0'" th:text="#{completion.serializing}">连载中</em><em class="black3"
+                                                                                  th:case="*" th:text="#{completion.completed}">已完结</em></span>
+                            <span><em th:text="#{totalClicks}">总点击</em>：<em class="black3" id="cTotal" th:text="${book.visitCount}"></em></span>
+                            <span><em th:text="#{wordCount}">总字数</em>：<em class="black3" th:text="${book.wordCount}"></em></span>
                         </li>
                     </ul>
                 </div>
