@@ -70,7 +70,8 @@
 .items_txt { width: 230px; float: left; /*padding-right: 20px;*/ }
 .items_txt h4 { height: 20px; line-height: 20px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; word-break: keep-all; margin-bottom: 8px; font-size: 16px; font-weight: normal }
 .items_txt .author { margin: 8px 0 }
-.items_txt .author a { color: #a6a6a6 }
+.items_txt .author a { color: #a6a6a6;    color: #a6a6a6;
+  white-space: nowrap; text-overflow: ellipsis; overflow: hidden; display: block; }
 .items_txt .intro { margin-top: 8px; line-height: 1.5; height: 54px; overflow: hidden }
 .searchTipBar { color: #333; font-size: 14px; padding: 1px 7px 16px 7px }
 .leftBox .updateTable { width: 718px; }

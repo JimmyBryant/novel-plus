@@ -17,6 +17,10 @@ JDK版本：openjdk 17.0.9
 Maven版本：Maven 3.8.1  
 MySQL：8.0.35 
 
+##  开发调试
+进入项目，使用 Maven 插件运行项目：spring.profiles.active=dev表示使用dev配置文件
+```mvn spring-boot:run -Dspring.profiles.active=dev```
+
 ##  编译项目
 #### 编译整个项目
 通过 -Dmaven.test.skip 参数指示 Maven 跳过测试  
