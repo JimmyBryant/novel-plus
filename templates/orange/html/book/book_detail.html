@@ -31,8 +31,7 @@
                                                       th:attr="alt=${book.bookName}"/></a>
             <div class="book_info">
                 <div class="tit">
-                    <h1 th:utext="${book.bookName}"></h1><!--<i class="vip_b">VIP</i>--><a class="author"
-                                                                                          th:utext="${book.authorName}+' 著'"></a>
+                    <h1 th:utext="${book.bookName}"></h1><!--<i class="vip_b">VIP</i>--><a class="author" th:text="#{written(${book.authorName})}"></a>
                 </div>
                 <ul class="list">
                     <li><span class="item"><span th:text="#{category}">类别</span>：<em th:text="${book.catName}"></em></span>
@@ -86,7 +85,7 @@
                     <div class="bookComment">
                         <div class="book_tit">
                             <div class="fl">
-                                <h3 th:text="#{commentsSection}">作品评论区</h3><span id="bookCommentTotal" th:text="'('+${bookCommentPageBean.total}+'条)'"></span>
+                                <h3 th:text="#{commentsSection}">作品评论区</h3><span id="bookCommentTotal" th:text="'('+${bookCommentPageBean.total}+' '+#{comments}+')'"></span>
                             </div>
                             <a class="fr" href="#txtComment" th:text="#{postComment}">发表评论</a>
                         </div>
@@ -208,6 +207,7 @@
 <script type="text/javascript">
     var pathname = window.location.pathname;
     var bookId = pathname.substring(pathname.lastIndexOf("/") + 1, pathname.lastIndexOf("."))
+    var isLocalZh = navigator.language.indexOf('zh')!=-1
     //查询章节信息
     var lastBookIndexId = $("#lastBookIndexId").val();
     if(lastBookIndexId){
@@ -219,7 +219,8 @@
             success: function (data) {
                 if (data.code == 200) {
                     var bookIndexData = data.data;
-                    $("#bookIndexCount").html("(" + bookIndexData.bookIndexCount + "章)");
+                    var chapterNumber = !isLocalZh?`(${bookIndexData.bookIndexCount} chapters)`:`(${bookIndexData.bookIndexCount}章)`
+                    $("#bookIndexCount").html(chapterNumber);
                     $("#lastBookContent").html(bookIndexData.lastBookContent + "...");
 
 
@@ -311,7 +312,8 @@
                 if (data.code == 200) {
                     var commentList = data.data.list;
                     if (commentList.length > 0) {
-                        $("#bookCommentTotal").html("("+data.data.total+"条)");
+                        commentsNumber = isLocalZh?`(${data.data.total}条)`:`${data.data.total}comments`
+                        $("#bookCommentTotal").html(commentsNumber);
                         var commentListHtml = "";
                         for (var i = 0; i < commentList.length; i++) {
                             var comment = commentList[i];
