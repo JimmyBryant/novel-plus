@@ -29,7 +29,7 @@ start(){
     echo ">>> 小说精品屋后台正在运行 PID = ${pid} <<<" 
   else 
     echo ">>> 小说精品屋后台开始启动 <<<" 
-    nohup java -jar -Dspring.profiles.active=prod $JAR_NAME >/dev/null 2>&1 &
+    nohup java --add-opens java.base/java.lang=ALL-UNNAMED -jar -Dspring.profiles.active=prod $JAR_NAME >/dev/null 2>&1 &
     sleep 20
     echo $! > $PID
     echo ">>> 小说精品屋后台启动完成 PID = $! <<<" 
