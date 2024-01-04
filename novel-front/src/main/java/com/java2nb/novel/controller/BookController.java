@@ -94,7 +94,6 @@ public class BookController extends BaseController {
         return RestResult.ok(bookService.queryBookDetail(id));
     }
 
-
     /**
      * 查询小说排行信息
      */
@@ -168,6 +167,14 @@ public class BookController extends BaseController {
     @GetMapping("queryNewIndexList")
     public RestResult<List<BookIndex>> queryNewIndexList(Long bookId) {
         return RestResult.ok(bookService.queryIndexList(bookId, "index_num desc", 1, 10));
+    }
+
+    /**
+     * 根据小说ID查询小说目录集合
+     */
+    @GetMapping("queryAllIndexList")
+    public RestResult<List<BookIndex>> queryAllIndexList(Long bookId) {
+        return RestResult.ok(bookService.queryIndexList(bookId, null, 1, null));
     }
 
     /**

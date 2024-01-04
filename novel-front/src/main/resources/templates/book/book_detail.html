@@ -65,7 +65,7 @@
                         <div class="book_tit">
                             <div class="fl">
                                 <h3 th:text="#{latestChapter}">最新章节</h3><span id="bookIndexCount">(0<span th:text="#{chapter}">章</span>)</span></div>
-                            <a class="fr" th:href="'/book/indexList-'+${book.id}+'.html'" th:text="#{allChapters}">全部目录</a>
+                            <!-- <a class="fr" th:href="'/book/indexList-'+${book.id}+'.html'" th:text="#{allChapters}">全部目录</a> -->
                         </div>
                         <ul class="list cf">
                             <li>
@@ -79,6 +79,21 @@
                     </div>
                 </div>
                 <!--章节目录 end-->
+
+                <!-- 全部章节 -->
+                <div class="pad20_nobt">
+                    <div class="bookChapter">
+                        <div class="book_tit">
+                            <div class="fl"><h3 th:text="#{allChapters}">全部章节</h3><span id="indexListCount"></span></div>
+                        </div>
+                        <div class="list cf">
+                            <div id="allIndexList">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 全部章节 end -->
 
                 <!--作品评论区 start-->
                 <div class="pad20">
@@ -219,10 +234,33 @@
             success: function (data) {
                 if (data.code == 200) {
                     var bookIndexData = data.data;
-                    var chapterNumber = !isLocalZh?`(${bookIndexData.bookIndexCount} chapters)`:`(${bookIndexData.bookIndexCount}章)`
+                    var chapterNumber = !isLocalZh?`(Chapter ${bookIndexData.bookIndexCount})`:`(${bookIndexData.bookIndexCount}章)`
                     $("#bookIndexCount").html(chapterNumber);
                     $("#lastBookContent").html(bookIndexData.lastBookContent + "...");
 
+
+                } else {
+                    layer.alert(data.msg);
+                }
+
+            },
+            error: function () {
+                layer.alert('网络异常');
+            }
+        })
+        // 查询全部章节
+        $.ajax({
+            type: "get",
+            url: "/book/queryAllIndexList",
+            data: {'bookId': bookId},
+            dataType: "json",
+            success: function (data) {
+                if (data.code == 200) {
+                    var bookIndexData = data.data;
+                    var chapterNumber = !isLocalZh?`(Total Of ${bookIndexData.length} Chapters)`:`(共${bookIndexData.length}章)`
+                    $("#indexListCount").html(chapterNumber);
+                    var items = bookIndexData.map(item => `<a class="item" href="/book/${item.bookId}/${item.id}.html">${item.indexName}</a>`)
+                    $('#allIndexList').html(items.join(''))
 
                 } else {
                     layer.alert(data.msg);
