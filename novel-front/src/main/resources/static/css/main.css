@@ -363,7 +363,8 @@
 }
 
 .items_txt .author a {
-    color: #a6a6a6
+    color: #a6a6a6;
+    white-space: nowrap; text-overflow: ellipsis; overflow: hidden; display: block; 
 }
 
 .items_txt .intro {
