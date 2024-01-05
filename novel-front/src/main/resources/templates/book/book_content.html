@@ -174,12 +174,12 @@
     <div class="readPopup setupBox" style="display: none;">
         <a class="closePopup" href="javascript:void(0);" onclick="javascript:$('.maskBox,.setupBox').hide();"></a>
         <div class="popupTit">
-            <h3>设置</h3>
+            <h3 th:text="#{settings}">设置</h3>
         </div>
         <div class="setupList">
             <ul>
                 <li class="readTheme">
-                    <em class="tit">阅读主题：</em>
+                    <em class="tit" th:text="#{settings.readingTheme}">阅读主题：</em>
                     <a id="setup_color_white" class="white current"
                        href="javascript:void(0);" title="白色" onclick="javascript:BookDetail.SetBackUpColor(1);"></a><a
                         id="setup_color_green" class="green" href="javascript:void(0);" title="绿色"
@@ -192,7 +192,7 @@
                                                                                   onclick="javascript:BookDetail.SetBackUpColor(5);"></a><a
                         id="setup_color_night" class="night" href="javascript:void(0);" title="夜间"
                         onclick="javascript:BookDetail.SetBackUpColor(6);"></a></li>
-                <li class="setFont setBtn"><em class="tit">正文字体：</em> <a id="setup_font_yahei" class="setYahei current"
+                <li class="setFont setBtn"><em class="tit" th:text="#{settings.bodyFont}">正文字体：</em> <a id="setup_font_yahei" class="setYahei current"
                                                                          href="javascript:void(0);"
                                                                          onclick="javascript:BookDetail.SetReadFontFamily(0);">雅黑</a>
                     <a id="setup_font_simsun" class="setSimsun" href="javascript:void(0);"
@@ -200,7 +200,7 @@
                                                                                        href="javascript:void(0);"
                                                                                        onclick="javascript:BookDetail.SetReadFontFamily(2);">楷书</a>
                 </li>
-                <li class="fontSize setBtn"><em class="tit">字体大小：</em> <a class="small" href="javascript:void(0);"
+                <li class="fontSize setBtn"><em class="tit" th:text="#{settings.fontSize}">字体大小：</em> <a class="small" href="javascript:void(0);"
                                                                           onclick="javascript:BookDetail.SetReadFont(-2);">A-</a><span
                         class="current_font"
                         id="cFonts">

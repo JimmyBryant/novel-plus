@@ -1,6 +1,7 @@
 spring:
   messages:
     basename: lang/messages
+    fallback-to-system-locale: false
 
   cache:
     ehcache:
