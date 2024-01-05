@@ -139,7 +139,7 @@
         <div style="position:relative;padding: 3px 10px 0px"
              class="layui-col-xs8 layui-col-sm8 layui-col-md8 layui-col-lg8">
             <a th:href="'javascript:searchBooks(\''+ ${book.authorName}+'\')'">
-                <div style=";color: #444;" th:utext="#{author}+'：'+ ${book.authorName}"></div>
+                <div style="color:#444;" th:utext="#{author}+'：'+ ${book.authorName}"></div>
             </a>
             <a th:href="'/book/book_ranking.html?catId='+${book.catId}">
                 <div style="margin-top: 5px;color: #444;" th:text="#{category}+'：'+ ${book.catName}"></div>
@@ -176,7 +176,7 @@
     <div class="layui-collapse">
         <div class="layui-colla-item">
             <h2 class="layui-colla-title">
-                <span th:text="#{latestChapter}">最新章节</span>
+                <span th:text="#{tableOfContents}">目录</span>
                 <span style="margin-left: 30px">
                 <span th:text="#{update}">更新</span>： <i th:text="${#dates.format(book.lastIndexUpdateTime, 'yy-MM-dd HH:mm:ss')}"></i>
             </span>
@@ -234,14 +234,15 @@
     //查询最新目录集合
     $.ajax({
         type: "get",
-        url: "/book/queryNewIndexList",
-        data: {'bookId': $("#bookIdHidden").val()},
+        url: "/book/queryIndexList",
+        data: {'bookId': $("#bookIdHidden").val(),'orderBy':'index_num asc','limit': 10},
         dataType: "json",
         success: function (data) {
             if (data.code == 200) {
                 var indexListHtml = "";
-                for (var i = 0; i < data.data.length; i++) {
-                    var bookIndex = data.data[i];
+                var list = data.data.list;
+                for (var i = 0; i < list.length; i++) {
+                    var bookIndex = list[i];
                     indexListHtml += ("<p class=\"line-limit-length layui-col-xs12 layui-col-sm4 layui-col-md3 layui-col-lg2\" style=\"padding-left:10px;height: 50px;line-height: 50px;\"><a href=\"/book/" + $("#bookIdHidden").val() + "/" + bookIndex.id + ".html\" style='color: #333'>" + bookIndex.indexName + "</a></p>");
                 }
 
