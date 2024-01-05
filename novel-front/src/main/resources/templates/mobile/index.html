@@ -144,7 +144,7 @@
                             <ul>
                                 <li style="padding-bottom: 2px" class="line-limit-length"
                                     th:text="${book.bookName}"></li>
-                                <li style="padding-bottom: 2px;color: #a6a6a6" th:text="'作者：'+${book.authorName}"></li>
+                                <li style="padding-bottom: 2px;color: #a6a6a6" th:text="#{author}+'：'+${book.authorName}"></li>
                                 <li style="color: #a6a6a6;width: 180px;height:60px;overflow: hidden"
                                     th:utext="${book.bookDesc}"></li>
                             </ul>
@@ -226,7 +226,7 @@
                         "\n" +
                         "                        <div style=\"clear: both\"></div>\n" +
                         "                        <div style=\"color: #a6a6a6;padding-left: 5px;padding-top: 5px\"\n" +
-                        "                             class=\"layui-elip layui-col-md11 layui-col-sm11 layui-col-lg11\">简介：　　" + updateRankBook.bookDesc + "" +
+                        "                             class=\"layui-elip layui-col-md11 layui-col-sm11 layui-col-lg11\">" + updateRankBook.bookDesc + "" +
                         "                    </div></a>\n" +
                         "                </div>");
 
