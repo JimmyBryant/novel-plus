@@ -84,7 +84,8 @@
                 <div class="pad20_nobt">
                     <div class="bookChapter">
                         <div class="book_tit">
-                            <div class="fl"><h3 th:text="#{allChapters}">全部章节</h3><span id="indexListCount"></span></div>
+                            <div class="fl"><h3 th:text="#{tableOfContents}">目录</h3><span id="indexListCount"></span></div>
+                            <a class="fr" th:href="'/book/indexList-'+${book.id}+'.html'" th:text="#{allChapters}">全部目录</a>
                         </div>
                         <div class="list cf">
                             <div id="allIndexList">
@@ -251,15 +252,16 @@
         // 查询全部章节
         $.ajax({
             type: "get",
-            url: "/book/queryAllIndexList",
-            data: {'bookId': bookId},
+            url: "/book/queryIndexList",
+            data: {'bookId': bookId,'orderBy':'index_num asc','limit': 10},
             dataType: "json",
             success: function (data) {
                 if (data.code == 200) {
-                    var bookIndexData = data.data;
-                    var chapterNumber = !isLocalZh?`(Total Of ${bookIndexData.length} Chapters)`:`(共${bookIndexData.length}章)`
+                    var data = data.data
+                    var list = data.list;
+                    var chapterNumber = !isLocalZh?`(Total Of ${data.total} Chapters)`:`(共${data.length}章)`
                     $("#indexListCount").html(chapterNumber);
-                    var items = bookIndexData.map(item => `<a class="item" href="/book/${item.bookId}/${item.id}.html">${item.indexName}</a>`)
+                    var items = list.map(item => `<a class="item" href="/book/${item.bookId}/${item.id}.html">${item.indexName}</a>`)
                     $('#allIndexList').html(items.join(''))
 
                 } else {
