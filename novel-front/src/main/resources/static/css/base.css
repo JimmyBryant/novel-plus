@@ -965,3 +965,9 @@ i.vip_b {
 .userBox {
     margin: 0 auto
 }
+.adbox{
+    margin: 10px 0;
+}
+.adsbygoogle[data-ad-status="unfilled"]{
+    display: none !important;
+}

@@ -69,7 +69,10 @@
             </div>
         </div>
     </div>
-
+    <div class="adbox">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3684565239645442" data-ad-slot="1810575387" data-ad-format="auto" data-full-width-responsive="true"></ins> 
+        <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
+    </div>
     <div class="channelWrap channelPic cf">
         <div class="leftBox">
             <div class="title">
@@ -82,7 +85,7 @@
                     </a>
                     <div class="items_txt">
                         <h4><a th:href="'/book/'+${book.bookId}+'.html'" th:text="${book.bookName}"></a></h4>
-                        <p class="author"><a href="javascript:void(0)" th:text="#{author}+'：'+${book.authorName}"></a></p>
+                        <p class="author"><a href="javascript:void(0)" th:text="'作者：'+${book.authorName}"></a></p>
                         <p class="intro"><a th:href="'/book/'+${book.bookId}+'.html'" th:utext="${book.bookDesc}"></a>
                         </p>
                     </div>
@@ -117,7 +120,7 @@
                     </a>
                     <div class="items_txt">
                         <h4><a th:href="'/book/'+${book.bookId}+'.html'" th:text="${book.bookName}"></a></h4>
-                        <p class="author"><a href="javascript:void(0)" th:text="#{author}+'：'+${book.authorName}"></a></p>
+                        <p class="author"><a href="javascript:void(0)" th:text="'作者：'+${book.authorName}"></a></p>
                         <p class="intro"><a th:href="'/book/'+${book.bookId}+'.html'" th:utext="${book.bookDesc}"></a>
                         </p>
                     </div>
@@ -149,11 +152,11 @@
                 <table cellpadding="0" cellspacing="0">
                     <thead>
                     <tr>
-                        <th class="style" th:text="#{category}">类别</th>
-                        <th class="name" th:text="#{bookTitle}">书名</th>
-                        <th class="chapter" th:text="#{latestChapter}">最新章节</th>
-                        <th class="author" th:text="#{author}">作者</th>
-                        <th class="time" th:text="#{updateTime}">更新时间</th>
+                        <th class="style">类别</th>
+                        <th class="name">书名</th>
+                        <th class="chapter">最新章节</th>
+                        <th class="author">作者</th>
+                        <th class="time">更新时间</th>
                     </tr>
                     </thead>
                     <tbody id="newRankBooks2">
