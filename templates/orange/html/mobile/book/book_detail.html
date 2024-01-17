@@ -235,7 +235,7 @@
     $.ajax({
         type: "get",
         url: "/book/queryIndexList",
-        data: {'bookId': $("#bookIdHidden").val(),'orderBy':'index_num asc','limit': 10},
+        data: {'bookId': $("#bookIdHidden").val(),'orderBy':'index_num asc','limit': 12},
         dataType: "json",
         success: function (data) {
             if (data.code == 200) {

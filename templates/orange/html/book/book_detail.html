@@ -175,8 +175,8 @@
                     </div>
                 </div>
                 <div class="author_intro cf">
-                    <h4>作者有话说</h4>
-                    <div class="intro_txt" id="authorNote">
+                    <h4 th:text="#{authorWords}">作者有话说</h4>
+                    <div class="intro_txt" id="authorNote" th:text="#{supportMessage}">
                         亲亲们，你们的支持是我最大的动力！求点击、求推荐、求书评哦！
                     </div>
                 </div>
@@ -265,7 +265,7 @@
         $.ajax({
             type: "get",
             url: "/book/queryIndexList",
-            data: {'bookId': bookId,'orderBy':'index_num asc','limit': 10},
+            data: {'bookId': bookId,'orderBy':'index_num asc','limit': 12},
             dataType: "json",
             success: function (data) {
                 if (data.code == 200) {
