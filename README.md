@@ -18,7 +18,9 @@ Maven版本：Maven 3.8.1
 MySQL：8.0.35 
 
 ##  开发调试
-进入项目，使用 Maven 插件运行项目：spring.profiles.active=dev表示使用dev配置文件
+进入项目安装依赖  
+``` mvn clean install ```  
+使用 Maven 插件运行项目：spring.profiles.active=dev表示使用dev配置文件  
 ```mvn spring-boot:run -Dspring.profiles.active=dev```
 
 ##  编译项目
@@ -28,7 +30,25 @@ MySQL：8.0.35
 #### 编译前端网站
 使用-am会同时打包依赖的本地模块  
 ``` mvn clean package -pl novel-front -am```
-
+##  运行项目
+#### 以novel-front为例子
+复制打包好的文件到项目目录  
+``` 
+cp novel-plus/novel-front/target/build/novel-front.zip /var/www/novel-front/
+unzip novel-front.zip
+```
+启动项目
+```
+bin/novel-front.sh start
+```
+停止项目
+```
+bin/novel-front.sh stop
+```
+重启项目
+```
+bin/novel-front.sh restart
+```
 ## 项目介绍
 
 novel-plus 是一个多端（PC、WAP）阅读，功能完善的原创文学 CMS
